@@ -1,0 +1,102 @@
+
+/* this is a comment in css */
+/* base styles */
+html, body { margin: 0; }
+
+.containimg{
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.scaleable{
+	animation: zoom 180s linear infinite alternate;
+	width: 100vw;
+}
+
+@keyframes zoom {
+	0% {
+	  transform:scale(6);
+	  }
+	  50%{
+	   transform:scale(1);
+
+	  }
+	100% {
+	  transform:scale(1);
+	  }
+} 
+
+#stepscontainer{
+	display: inline;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+
+.stepsimg{
+	height: 99vh;
+	/* margin-top: 50px; */
+	margin-left: 50px;
+	animation: bannermove 10s linear infinite;
+}
+
+.step{
+	display: inline;
+	overflow-y: hidden;
+	margin-right: 20px;
+}
+
+
+
+.caption{
+	color: black;
+	font-family: helvetica;
+	font-size: 13px;
+	display: none;
+	margin-left: 20px;
+	margin-right:0;
+}
+
+.step:hover .caption{
+	opacity: 1;
+	font-family: helvetica;
+	display: inline-block;
+
+}
+
+#colophon{
+	position: fixed;
+	z-index: 100;
+	bottom: 0;
+	right: 0;
+	margin: 10px;
+	font-family: helvetica;
+	font-size: 13px;
+	display: none;
+	margin-bottom: 20px;
+}
+
+
+#colophonLink{
+	position: fixed;
+	z-index: 100;
+	bottom: 0;
+	right: 0;
+	margin: 10px;
+	font-family: helvetica;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.back{
+	position: fixed;
+	font-family: helvetica;
+	font-size: 13px;
+	margin: 10px;
+	color: black;
+	cursor: pointer;
+}
+
+a:visited{
+	color: black;
+}

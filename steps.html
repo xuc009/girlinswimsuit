@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- the head of an html document is used to define meta values (for the web browser to read), and to link supporting css files -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>index</title>
+	<link rel="stylesheet" type="text/css" href="assets/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/static/css/bootstrap-grid.min.css">
+</head>
+	<body>
+
+	<div class="back">
+			<a href="javascript:close_window();">close</a>
+	</div>
+
+	<div id="stepscontainer">
+
+	</div>
+
+
+	<script>
+
+		function close_window() {
+		if (confirm("Close Window?")) {
+			close();
+		}
+		}
+		currentSrc = localStorage.getItem("src")
+		console.log(currentSrc)
+		var filename = currentSrc.split('/');
+		var currentSplitSrc = filename[filename.length - 1].split('-');
+		var currLetter = currentSplitSrc[0];
+		console.log(currLetter);
+		// splitsrc is array
+		
+		var steps = `
+			<div class="step">
+				<img class="stepsimg" src="assets/img/${currLetter}-iuv-.png">	
+				<div class = "caption">
+					<img src="assets/img/x_diagrams/iuv.png" width="200">
+					<p>IUV image</p>
+				</div>		
+			</div>
+			
+			<div class="step">
+				<img class="stepsimg" src= "assets/img/${currLetter}-tex-.png">
+				<div class = "caption">
+					<img src="assets/img/x_diagrams/3d-mapping.png" width="200">
+					<p>UV atlas texture</p>
+				</div>
+			</div>
+
+			<div class = "step">
+				<img class="stepsimg" src= "assets/img/${currLetter}-nobg-.png">
+				<div class = "caption">
+					<img src="assets/img/x_diagrams/texturetransfer1.png" width="200">
+					<p>Texture transfer to IUV image</p>
+				</div>
+			</div>
+			<img class="stepsimg" src= "assets/img/${currLetter}-bg-.png">
+		`
+		document.getElementById('stepscontainer').insertAdjacentHTML('beforeend', steps);
+
+		var imgArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+		window.onscroll = function(ev,i){
+			if ((window.innerWidth + window.scrollX) >= document.body.offsetWidth) {
+				if (imgArray.length === undefined || imgArray.length == 0) {
+					console.log("done")
+				}
+				else {
+					currLetterIdx = imgArray.indexOf(currLetter);
+					if (currLetterIdx >= imgArray.length-1) {
+						currLetterIdx = 0
+					}
+					currLetter = imgArray[currLetterIdx+=1]
+					var steps = `
+						<img class="stepsimg" src="assets/img/${currLetter}-iuv-.png">
+						<img class="stepsimg" src= "assets/img/${currLetter}-tex-.png">
+						<img class="stepsimg" src= "assets/img/${currLetter}-nobg-.png">
+						<img class="stepsimg" src= "assets/img/${currLetter}-bg-.png">
+					`
+					document.getElementById('stepscontainer').insertAdjacentHTML('beforeend', steps);
+				}
+			}
+		}
+
+	</script>
+	</body>
+</html>
